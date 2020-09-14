@@ -1,1 +1,29 @@
+1)Add a User in a kali linux
+Command :- adduser username
 
+2)Network Setting In Kali Linux
+IP Address
+Command :- sudo ifconfig -a
+
+3)IP address and Netmask Network Configuration
+Command:- sudo ifconfig eth0 192.168.1.6 netmask 255.255.255.0
+
+4)Configure Services In Kali Linux
+Command :- service ssh start
+Command :- ssh username@hostname
+
+5)Basic Command To Run , Enable , Start and Stop Services
+Command :- systemctl [command] [service_name]
+
+6)To stop and restart the service in Linux, use the command:
+Command :- sudo systemctl restart SERVICE_NAME
+Command :- sudo systemctl stop SERVICE_NAME
+
+7)To Enable Services At Boot
+Command :- sudo systemctl enable SERVICE_NAME
+
+8)To display the list of services which are running In Kali Linux
+Command :- sudo systemctl -t=service --state=running
+
+9)Sudo settings
+Command :- sudo apt install -y software_name
