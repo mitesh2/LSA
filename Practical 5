@@ -1,0 +1,61 @@
+1) Install Samba server.
+Command:-sudo apt-get -y install samba
+
+2) Make a directory and add some file in it
+  For making a directory.
+  Command:-mkdir dir_name
+  For adding files to it .
+  Command:-touch file_name
+
+3) Now open smb.conf to open it goto /etc/samba folder.
+Command:-cd /etc/samba
+
+note:-Its better to take backup of smb.conf if your doing this for first time.
+Command:-cp source destination
+
+4) To open smb.conf you can use nano or vi
+Command:-sudo nano /etc/samba/smb.conf
+or vi /etc/samba/smb.conf
+
+5) Put the following code in it.
+Commands:-[dir_name]
+[samba_share]
+   comment = Welcome to samba
+   path = /home/kali/samba_shared [here give your dir_path that you give]
+   browseable = yes
+   read only = yes
+
+6) Start daemon of samba server i.e smdb and nmdb
+Command:-systemctl start sn=mdb/nmdb
+note:-To check status of daemons just replace start with status in above code.
+
+7) If daemons are activated then create an samba user id and password
+Command:-smbpasswd -a username
+note:-After running this line of code it will ask you create your password.
+
+8) Now check your ip address from following command and copy it.
+Command:-ip addr
+
+9) To share your directory through Samba server use follwowing command
+Command:-net usershare add documents "/home/kali/samba_shared" "folder_name"
+
+Windows OS Part:
+
+1.In windows press windows + R key and now a pop up box will open and their write ip addr 
+2.Write your credentials 
+3.Now samba_shared and documents folder are visible.
+Connection and sharing has successfully done here.
+
+If your connection is not working.
+  sudo pdbedit -a -u $(whoami)
+
+  1)  sudo pdbedit -L (to check all users)
+  2) make any connectionn possible
+          sudo ufw allow from (your ip addr) any app Samba
+  3)  reload firewall:
+           sudo ufw reload  
+  4)  To check
+           sudo smbcllient -U <username> -L  //your ip
+  5)  restart services
+           sudo systemctl restart smbd
+           sudo systemctl restart nmbd
