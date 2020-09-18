@@ -26,7 +26,8 @@ Commands:-[dir_name]
    read only = yes
 
 6) Start daemon of samba server i.e smdb and nmdb
-Command:-systemctl start sn=mdb/nmdb
+Command:-systemctl start smdb
+         systemctl start nmdb
 note:-To check status of daemons just replace start with status in above code.
 
 7) If daemons are activated then create an samba user id and password
